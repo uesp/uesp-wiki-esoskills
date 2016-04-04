@@ -1,0 +1,10 @@
+{
+    "@metadata": {
+        "authors": [
+            "Daveh"
+        ]
+    },
+    "esoskills": "ESO Skills",
+    "esoskills-desc": "Displays interactive ESO skills tree.",
+    "esoskills-summary": "Viewing ESO skills."
+}
