@@ -64,6 +64,8 @@ function UespEsoSkillsParserInit(Parser $parser)
 
 function uespRenderEsoSkillTooltip($input, array $args, Parser $parser, PPFrame $frame)
 {
+	global $wgScriptPath;
+	
 	$output = "";
 	
 	$skillId = "";
@@ -125,7 +127,7 @@ function uespRenderEsoSkillTooltip($input, array $args, Parser $parser, PPFrame 
 	if ($skillSpellDamage  != "") $attributes .= "spelldamage='$skillSpellDamage' ";
 	if ($skillWeaponDamage != "") $attributes .= "weapondamage='$skillWeaponDamage' ";
 	
-	$url = "http://esolog.uesp.net/viewSkills.php?id=$skillId";
+	$url = "/wiki/Special:EsoSkills?id=$skillId";
 	
 	$output = "<a class='esoSkillTooltipLink' href='$url' $attributes>$input</a>";
 	
