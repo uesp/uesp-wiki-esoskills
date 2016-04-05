@@ -62,6 +62,28 @@ function UespEsoSkillsParserInit(Parser $parser)
 }
 
 
+function ParseEsoLevel($level)
+{
+	if (is_numeric($level))
+	{
+		$value = intval($level);
+		if ($value <  1) $value = 1;
+		if ($value > 66) $value = 66;
+		return $value;
+	}
+
+	if (preg_match("#^[vV]([0-9]+)#", trim($level), $matches))
+	{
+		$value = intval($matches[1]) + 50;
+		if ($value <  1) $value = 1;
+		if ($value > 66) $value = 66;
+		return $value;
+	}
+
+	return 66;
+}
+
+
 function uespRenderEsoSkillTooltip($input, array $args, Parser $parser, PPFrame $frame)
 {
 	global $wgScriptPath;
@@ -120,6 +142,18 @@ function uespRenderEsoSkillTooltip($input, array $args, Parser $parser, PPFrame 
 				break;
 		}
 	
+	}
+	
+	if ($skillLevel != "")
+	{
+		$realLevel = ParseEsoLevel($skillLevel);
+		
+		if ($skillHealth  == "") $skillHealth  = round($realLevel * 287.8788 + 712.1212);
+		if ($skillMagicka == "") $skillMagicka = round($realLevel * 287.8788 + 712.1212);
+		if ($skillStamina == "") $skillStamina = round($realLevel * 287.8788 + 712.1212);
+		
+		if ($skillSpellDamage  == "") $skillSpellDamage  = round($realLevel * 28.78788 + 71.21212);
+		if ($skillWeaponDamage == "") $skillWeaponDamage = round($realLevel * 28.78788 + 71.21212);
 	}
 	
 	$attributes = "";
