@@ -75,6 +75,7 @@ function uespRenderEsoSkillTooltip($input, array $args, Parser $parser, PPFrame 
 	$skillStamina = "";
 	$skillSpellDamage = "";
 	$skillWeaponDamage = "";
+	$skillShowAll = "1";
 	
 	foreach ($args as $name => $value)
 	{
@@ -114,20 +115,65 @@ function uespRenderEsoSkillTooltip($input, array $args, Parser $parser, PPFrame 
 			case "weapondamage":
 				$skillWeaponDamage = $value;
 				break;
+			case "showall":
+				$skillShowAll = $value;
+				break;
 		}
 	
 	}
 	
 	$attributes = "";
-	if ($skillId           != "") $attributes .= "skillid='$skillId' ";
-	if ($skillLevel        != "") $attributes .= "level='$skillLevel' ";
-	if ($skillHealth       != "") $attributes .= "health='$skillHealth' ";
-	if ($skillMagicka      != "") $attributes .= "magicka='$skillMagicka' ";
-	if ($skillStamina      != "") $attributes .= "stamina='$skillStamina' ";
-	if ($skillSpellDamage  != "") $attributes .= "spelldamage='$skillSpellDamage' ";
-	if ($skillWeaponDamage != "") $attributes .= "weapondamage='$skillWeaponDamage' ";
+	$params = "";
 	
-	$url = "/wiki/Special:EsoSkills?id=$skillId";
+	if ($skillId != "") 
+	{
+		$attributes .= "skillid='$skillId' ";
+		$params .= "&id=$skillId";
+	}
+	
+	if ($skillLevel != "") 
+	{
+		$attributes .= "level='$skillLevel' ";
+		$params .= "&level=$skillLevel";
+	}
+	
+	if ($skillHealth != "") 
+	{
+		$attributes .= "health='$skillHealth' ";
+		$params .= "&health=$skillHealth";
+	}
+	
+	if ($skillMagicka != "") 
+	{ 
+		$attributes .= "magicka='$skillMagicka' ";
+		$params .= "&magicka=$skillMagicka";
+	}
+	
+	if ($skillStamina != "") 
+	{
+		$attributes .= "stamina='$skillStamina' ";
+		$params .= "&stamina=$skillStamina";
+	}
+	
+	if ($skillSpellDamage != "") 
+	{
+		$attributes .= "spelldamage='$skillSpellDamage' ";
+		$params .= "&spelldamage=$skillSpellDamage";
+	}
+	
+	if ($skillWeaponDamage != "") 
+	{
+		$attributes .= "weapondamage='$skillWeaponDamage' ";
+		$params .= "&weapondamage=$skillWeaponDamage";
+	}
+	
+	if ($skillShowAll != "") 
+	{
+		$attributes .= "showall='$skillShowAll' ";
+		$params .= "&showall=$skillShowAll";
+	}
+	
+	$url = "/wiki/Special:EsoSkills?$params";
 	
 	$output = "<a class='esoSkillTooltipLink' href='$url' $attributes>$input</a>";
 	
