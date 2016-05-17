@@ -1,28 +1,28 @@
 <?php
 
 
-class SpecialEsoSkills extends SpecialPage 
+class SpecialEsoSkills extends SpecialPage
 {
 	public $skillsViewer = null;
-	
-	
-	function __construct() 
+
+
+	function __construct()
 	{
 		global $wgOut;
-				
+
 		parent::__construct( 'EsoSkills' );
-		
+
 		$this->skillsViewer = new CEsoViewSkills(true);
 		$this->skillsViewer->baseUrl = "/wiki/Special:EsoSkills";
 		$this->skillsViewer->basePath = "/home/uesp/esolog.static/";
 		$this->skillsViewer->baseResourceUrl = "http://esolog.uesp.net/";
 	}
-	
 
-	function execute( $par ) 
+
+	function execute( $par )
 	{
 		$this->skillsViewer->wikiContext = $this->getContext();
-		
+
 		$request = $this->getRequest();
 		$output = $this->getOutput();
 		$this->setHeaders();
@@ -32,11 +32,12 @@ class SpecialEsoSkills extends SpecialPage
 
 		$output->addHTML($this->skillsViewer->GetOutputHtml());
 	}
-	
-	
-	function getGroupName() 
+
+
+	function getGroupName()
 	{
 		return 'wiki';
 	}
-	
+
 };
+

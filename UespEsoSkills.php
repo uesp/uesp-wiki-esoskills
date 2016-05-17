@@ -3,7 +3,8 @@
 /*
  * UespEsoSkills -- by DAve Humphrey, dave@uesp.net, April 2016
  * 
- * Adds the <esoskill> tag extension to MediaWiki for displaying an ESO skill popup tooltip.
+ * Adds the <esoskill> tag extension to MediaWiki for displaying an ESO skill popup tooltip
+ * as well as adding the skills and champion point browser special pages.
  *
  * TODO:
  *
@@ -13,7 +14,7 @@
 if ( !defined( 'MEDIAWIKI' ) ) {
 	echo <<<EOT
 To install my extension, put the following line in LocalSettings.php:
-require_once( "\$IP/extensions/EsoCharData/EsoCharData.php" );
+require_once( "\$IP/extensions/UespEsoSkills.php/UespEsoSkills.php" );
 EOT;
 	exit( 1 );
 }
@@ -21,6 +22,7 @@ EOT;
 
 require_once("/home/uesp/secrets/esolog.secrets");
 require_once('/home/uesp/esolog.static/viewSkills.class.php');
+require_once('/home/uesp/esolog.static/viewCps.class.php');
 
 
 $wgExtensionCredits['specialpage'][] = array(
@@ -29,20 +31,22 @@ $wgExtensionCredits['specialpage'][] = array(
 		'author' => 'Dave Humphrey (dave@uesp.net)',
 		'url' => 'http://www.uesp.net/wiki/UESPWiki:EsoSkills',
 		'descriptionmsg' => 'esoskills-desc',
-		'version' => '0.1.0',
+		'version' => '0.2.0',
 );
 
 
 $wgAutoloadClasses['SpecialEsoSkills'] = __DIR__ . '/SpecialEsoSkills.php';
+$wgAutoloadClasses['SpecialEsoCps'] = __DIR__ . '/SpecialEsoCps.php';
 $wgMessagesDirs['EsoSkills'] = __DIR__ . "/i18n";
 $wgExtensionMessagesFiles['EsoSkills'] = __DIR__ . '/EsoSkills.alias.php';
 $wgSpecialPages['EsoSkills'] = 'SpecialEsoSkills';
+$wgSpecialPages['EsoCps'] = 'SpecialEsoCps';
 
 $wgHooks['ParserFirstCallInit'][] = 'UespEsoSkillsParserInit';
-$wgHooks['BeforePageDisplay'][] = 'uesoEsoSkills_beforePageDisplay';
+$wgHooks['BeforePageDisplay'][] = 'uespEsoSkills_beforePageDisplay';
 
 
-function uesoEsoSkills_beforePageDisplay(&$out) {
+function uespEsoSkills_beforePageDisplay(&$out) {
 	global $wgScriptPath;
 	
 	$out->addHeadItem("uesp-esoskills-css", "<link rel='stylesheet' href='$wgScriptPath/extensions/UespEsoSkills/uespesoskills.css?4Apr2016' />");
@@ -50,6 +54,9 @@ function uesoEsoSkills_beforePageDisplay(&$out) {
 	
 	$out->addHeadItem("uesp-esoskillsbrowser-css", "<link rel='stylesheet' href='http://esolog.uesp.net/resources/esoskills_embed.css' />");
 	$out->addHeadItem("uesp-esoskillsbrowser-js", "<script src='http://esolog.uesp.net/resources/esoskills.js'></script>");
+	
+	$out->addHeadItem("uesp-esocpsbrowser-css", "<link rel='stylesheet' href='http://esolog.uesp.net/resources/esocp_simple_embed.css' />");
+	$out->addHeadItem("uesp-esocpsbrowser-js", "<script src='http://esolog.uesp.net/resources/esocp_simple.js'></script>");
 	
 	return true;
 }
@@ -138,7 +145,8 @@ function uespRenderEsoSkillTooltip($input, array $args, Parser $parser, PPFrame 
 				$skillWeaponDamage = $value;
 				break;
 			case "showall":
-				$skillShowAll = $value;
+				$skillShowAll = trim($value);
+				if ($skillShowAll == "") $skillShowAll = "1";
 				break;
 		}
 	
