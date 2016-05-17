@@ -13,5 +13,6 @@ $specialPageAliases = array();
  */
 $specialPageAliases['en'] = array(
 	'EsoSkills' => array( 'EsoSkills', 'ESO Skills' ),
+	'EsoCps' => array( 'EsoCps', 'ESO Champion Points' )
 );
 

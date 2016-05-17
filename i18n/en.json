@@ -6,5 +6,9 @@
     },
     "esoskills": "ESO Skills",
     "esoskills-desc": "Displays interactive ESO skills tree.",
-    "esoskills-summary": "Viewing ESO skills."
+    "esoskills-summary": "Viewing ESO skills.",
+    
+    "esocps": "ESO Champion Points",
+    "esocps-desc": "Displays interactive ESO champion points.",
+    "esocps-summary": "Viewing ESO Champion Points."
 }
