@@ -11,7 +11,7 @@ function CreateEsoSkillPopupTooltip()
 
 function ShowEsoSkillPopupTooltip(parent, skillId, level, health, magicka, stamina, spellDamage, weaponDamage)
 {
-	var linkSrc = "http://esolog.uesp.net/skillTooltip.php?embed";
+	var linkSrc = "//esolog.uesp.net/skillTooltip.php?embed";
 	var dataOk = false;
 	
 	if (skillId) { linkSrc += "&id=" + skillId; dataOk = true; }

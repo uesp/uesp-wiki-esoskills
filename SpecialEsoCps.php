@@ -15,7 +15,7 @@ class SpecialEsoCps extends SpecialPage
 		$this->cpsViewer = new CEsoViewCP(true);
 		$this->cpsViewer->baseUrl = "/wiki/Special:EsoCps";
 		$this->cpsViewer->basePath = "/home/uesp/esolog.static/";
-		$this->cpsViewer->baseResourceUrl = "http://esolog.uesp.net/";
+		$this->cpsViewer->baseResourceUrl = "//esolog.uesp.net/";
 	}
 
 

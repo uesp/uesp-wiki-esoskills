@@ -15,7 +15,7 @@ class SpecialEsoSkills extends SpecialPage
 		$this->skillsViewer = new CEsoViewSkills(true);
 		$this->skillsViewer->baseUrl = "/wiki/Special:EsoSkills";
 		$this->skillsViewer->basePath = "/home/uesp/esolog.static/";
-		$this->skillsViewer->baseResourceUrl = "http://esolog.uesp.net/";
+		$this->skillsViewer->baseResourceUrl = "//esolog.uesp.net/";
 	}
 
 
