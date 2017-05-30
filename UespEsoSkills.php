@@ -49,17 +49,17 @@ $wgHooks['BeforePageDisplay'][] = 'uespEsoSkills_beforePageDisplay';
 function uespEsoSkills_beforePageDisplay(&$out) {
 	global $wgScriptPath;
 	
-	$out->addHeadItem("uesp-jqueryui1-js", "<script src='//esolog-static.uesp.net/resources/jquery-ui.min.js?version=28Mar2017'></script>");
-	$out->addHeadItem("uesp-jqueryui2-js", "<script src='//esolog-static.uesp.net/resources/jquery.ui.touch-punch.min.js?version=28Mar2017'></script>");
+	$out->addHeadItem("uesp-jqueryui1-js", "<script src='//esolog-static.uesp.net/resources/jquery-ui.min.js?version=30May2017'></script>");
+	$out->addHeadItem("uesp-jqueryui2-js", "<script src='//esolog-static.uesp.net/resources/jquery.ui.touch-punch.min.js?version=30May2017'></script>");
 	
-	$out->addHeadItem("uesp-esoskills-css", "<link rel='stylesheet' href='$wgScriptPath/extensions/UespEsoSkills/uespesoskills.css?8Mar2017' />");
-	$out->addHeadItem("uesp-esoskills-js", "<script src='$wgScriptPath/extensions/UespEsoSkills/uespesoskills.js?8Mar2017'></script>");
+	$out->addHeadItem("uesp-esoskills-css", "<link rel='stylesheet' href='$wgScriptPath/extensions/UespEsoSkills/uespesoskills.css?30May2017' />");
+	$out->addHeadItem("uesp-esoskills-js", "<script src='$wgScriptPath/extensions/UespEsoSkills/uespesoskills.js?30May2017'></script>");
 	
-	$out->addHeadItem("uesp-esoskillsbrowser-css", "<link rel='stylesheet' href='//esolog-static.uesp.net/resources/esoskills_embed.css?31Mar2017' />");
-	$out->addHeadItem("uesp-esoskillsbrowser-js", "<script src='//esolog-static.uesp.net/resources/esoskills.js?31Mar2017'></script>");
+	$out->addHeadItem("uesp-esoskillsbrowser-css", "<link rel='stylesheet' href='//esolog-static.uesp.net/resources/esoskills_embed.css?30May2017' />");
+	$out->addHeadItem("uesp-esoskillsbrowser-js", "<script src='//esolog-static.uesp.net/resources/esoskills.js?30May2017'></script>");
 	
-	$out->addHeadItem("uesp-esocpsbrowser-css", "<link rel='stylesheet' href='//esolog-static.uesp.net/resources/esocp_simple_embed.css?8Mar2017' />");
-	$out->addHeadItem("uesp-esocpsbrowser-js", "<script src='//esolog-static.uesp.net/resources/esocp_simple.js?8Mar2017'></script>");
+	$out->addHeadItem("uesp-esocpsbrowser-css", "<link rel='stylesheet' href='//esolog-static.uesp.net/resources/esocp_simple_embed.css?30May2017' />");
+	$out->addHeadItem("uesp-esocpsbrowser-js", "<script src='//esolog-static.uesp.net/resources/esocp_simple.js?30May2017'></script>");
 	
 	return true;
 }
