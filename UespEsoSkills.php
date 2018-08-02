@@ -53,7 +53,7 @@ function uespEsoSkills_beforePageDisplay(&$out) {
 	$out->addHeadItem("uesp-jqueryui2-js", "<script src='//esolog-static.uesp.net/resources/jquery.ui.touch-punch.min.js?version=2May2018'></script>");
 	
 	$out->addHeadItem("uesp-esoskills-css", "<link rel='stylesheet' href='$wgScriptPath/extensions/UespEsoSkills/uespesoskills.css?2May2018' />");
-	$out->addHeadItem("uesp-esoskills-js", "<script src='$wgScriptPath/extensions/UespEsoSkills/uespesoskills.js?2May2018'></script>");
+	$out->addHeadItem("uesp-esoskills-js", "<script src='$wgScriptPath/extensions/UespEsoSkills/uespesoskills.js?2Aug2018'></script>");
 	
 	$out->addHeadItem("uesp-esoskillsbrowser-css", "<link rel='stylesheet' href='//esolog-static.uesp.net/resources/esoskills_embed.css?2May2018' />");
 	$out->addHeadItem("uesp-esoskillsbrowser-js", "<script src='//esolog-static.uesp.net/resources/esoskills.js?30May2018'></script>");
