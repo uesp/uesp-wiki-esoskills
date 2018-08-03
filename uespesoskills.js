@@ -9,7 +9,7 @@ function CreateEsoSkillPopupTooltip()
 }
 
 
-function ShowEsoSkillPopupTooltip(parent, skillId, level, health, magicka, stamina, spellDamage, weaponDamage)
+function ShowEsoSkillPopupTooltip(parent, skillId, level, health, magicka, stamina, spellDamage, weaponDamage, skillLine)
 {
 	var linkSrc = "//esolog.uesp.net/skillTooltip.php?embed";
 	var dataOk = false;
@@ -21,6 +21,7 @@ function ShowEsoSkillPopupTooltip(parent, skillId, level, health, magicka, stami
 	if (stamina) linkSrc += "&stamina=" + stamina;
 	if (spellDamage) linkSrc += "&spelldamage=" + spellDamage;
 	if (weaponDamage) linkSrc += "&weapondamage=" + weaponDamage;
+	if (skillLine) linkSrc += "&skillline=" + skillLine;
 	
 	if (!dataOk) return false;
 	
@@ -100,7 +101,7 @@ function HideEsoSkillPopupTooltip()
 
 function OnEsoSkillLinkEnter()
 {
-	ShowEsoSkillPopupTooltip(this, $(this).attr('skillid'), $(this).attr('level'), $(this).attr('health'), $(this).attr('magicka'), $(this).attr('stamina'), $(this).attr('spelldamage'), $(this).attr('weapondamage'));
+	ShowEsoSkillPopupTooltip(this, $(this).attr('skillid'), $(this).attr('level'), $(this).attr('health'), $(this).attr('magicka'), $(this).attr('stamina'), $(this).attr('spelldamage'), $(this).attr('weapondamage'), $(this).attr('skillline'));
 }
 
 

@@ -53,7 +53,7 @@ function uespEsoSkills_beforePageDisplay(&$out) {
 	$out->addHeadItem("uesp-jqueryui2-js", "<script src='//esolog-static.uesp.net/resources/jquery.ui.touch-punch.min.js?version=2May2018'></script>");
 	
 	$out->addHeadItem("uesp-esoskills-css", "<link rel='stylesheet' href='$wgScriptPath/extensions/UespEsoSkills/uespesoskills.css?2May2018' />");
-	$out->addHeadItem("uesp-esoskills-js", "<script src='$wgScriptPath/extensions/UespEsoSkills/uespesoskills.js?2Aug2018'></script>");
+	$out->addHeadItem("uesp-esoskills-js", "<script src='$wgScriptPath/extensions/UespEsoSkills/uespesoskills.js?3Aug2018'></script>");
 	
 	$out->addHeadItem("uesp-esoskillsbrowser-css", "<link rel='stylesheet' href='//esolog-static.uesp.net/resources/esoskills_embed.css?2May2018' />");
 	$out->addHeadItem("uesp-esoskillsbrowser-js", "<script src='//esolog-static.uesp.net/resources/esoskills.js?30May2018'></script>");
@@ -101,6 +101,8 @@ function uespRenderEsoSkillTooltip($input, array $args, Parser $parser, PPFrame 
 	$output = "";
 	
 	$skillId = "";
+	$skillName = "";
+	$skillLine = "";
 	$skillLevel = "";
 	$skillHealth = "";
 	$skillMagicka = "";
@@ -112,11 +114,17 @@ function uespRenderEsoSkillTooltip($input, array $args, Parser $parser, PPFrame 
 	foreach ($args as $name => $value)
 	{
 		$name = strtolower($name);
-	
+		
 		switch ($name)
 		{
 			case "skillid":
 				$skillId = $value;
+				break;
+			case "skillname":
+				$skillName = $value;
+				break;
+			case "skillline":
+				$skillLine = $value;
 				break;
 			case "l":
 			case "level":
@@ -174,6 +182,18 @@ function uespRenderEsoSkillTooltip($input, array $args, Parser $parser, PPFrame 
 	{
 		$attributes .= "skillid='$skillId' ";
 		$params .= "&id=$skillId";
+	}
+	
+	if ($skillName != "") 
+	{
+		$attributes .= "skillname='$skillName' ";
+		$params .= "&skillname=$skillName";
+	}
+	
+	if (skillLine != "") 
+	{
+		$attributes .= "skillline='$skillLine' ";
+		$params .= "&skillline=$skillLine";
 	}
 	
 	if ($skillLevel != "") 
