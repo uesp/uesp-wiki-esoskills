@@ -56,7 +56,7 @@ function uespEsoSkills_beforePageDisplay(&$out) {
 	$out->addHeadItem("uesp-esoskills-js", "<script src='$wgScriptPath/extensions/UespEsoSkills/uespesoskills.js?3Aug2018'></script>");
 	
 	$out->addHeadItem("uesp-esoskillsbrowser-css", "<link rel='stylesheet' href='//esolog-static.uesp.net/resources/esoskills_embed.css?2May2018' />");
-	$out->addHeadItem("uesp-esoskillsbrowser-js", "<script src='//esolog-static.uesp.net/resources/esoskills.js?30May2018'></script>");
+	$out->addHeadItem("uesp-esoskillsbrowser-js", "<script src='//esolog-static.uesp.net/resources/esoskills.js?10Aug2018'></script>");
 	
 	$out->addHeadItem("uesp-esocpsbrowser-css", "<link rel='stylesheet' href='//esolog-static.uesp.net/resources/esocp_simple_embed.css?2May2018' />");
 	$out->addHeadItem("uesp-esocpsbrowser-js", "<script src='//esolog-static.uesp.net/resources/esocp_simple.js?2May2018'></script>");
