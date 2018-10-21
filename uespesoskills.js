@@ -1,5 +1,5 @@
-var g_EsoSkillPopupTooltip = null;
-var g_EsoSkillPopupIsVisible = false;
+window.g_EsoSkillPopupTooltip = null;
+window.g_EsoSkillPopupIsVisible = false;
 
 
 function CreateEsoSkillPopupTooltip()
@@ -9,21 +9,24 @@ function CreateEsoSkillPopupTooltip()
 }
 
 
-function ShowEsoSkillPopupTooltip(parent, skillId, level, health, magicka, stamina, spellDamage, weaponDamage, skillLine)
+window.ShowEsoSkillPopupTooltip = function (parent, skillId, level, health, magicka, stamina, spellDamage, weaponDamage, skillLine)
 {
-	var linkSrc = "//esolog.uesp.net/skillTooltip.php?embed";
+	var linkSrc = "//esolog.uesp.net/skillTooltip.php";
 	var dataOk = false;
+	var params = "embed";
 	
-	if (skillId) { linkSrc += "&id=" + skillId; dataOk = true; }
-	if (level) linkSrc += "&level=" + level;
-	if (health) linkSrc += "&health=" + health;
-	if (magicka) linkSrc += "&magicka=" + magicka;
-	if (stamina) linkSrc += "&stamina=" + stamina;
-	if (spellDamage) linkSrc += "&spelldamage=" + spellDamage;
-	if (weaponDamage) linkSrc += "&weapondamage=" + weaponDamage;
-	if (skillLine) linkSrc += "&skillline=" + skillLine;
+	if (skillLine) params += "&skillline=" + skillLine;
+	if (skillId) { params += "&id=" + skillId; dataOk = true; }
+	if (level) params += "&level=" + level;
+	if (health) params += "&health=" + health;
+	if (magicka) params += "&magicka=" + magicka;
+	if (stamina) params += "&stamina=" + stamina;
+	if (spellDamage) params += "&spelldamage=" + spellDamage;
+	if (weaponDamage) params += "&weapondamage=" + weaponDamage;
 	
 	if (!dataOk) return false;
+	
+	//params = encodeURIComponent(params);
 	
 	if (g_EsoSkillPopupTooltip == null) CreateEsoSkillPopupTooltip();
 	
@@ -33,13 +36,14 @@ function ShowEsoSkillPopupTooltip(parent, skillId, level, health, magicka, stami
 	
 	g_EsoSkillPopupIsVisible = true;
 
-	g_EsoSkillPopupTooltip.load(linkSrc, "", function() {
-		
+	g_EsoSkillPopupTooltip.load(linkSrc, params, function() {
+	
 		if (g_EsoSkillPopupIsVisible)
 		{
 			g_EsoSkillPopupTooltip.show();
 			AdjustEsoItemLinkTooltipPosition(g_EsoSkillPopupTooltip, $(parent));
 		}
+
 	});
 }
 
