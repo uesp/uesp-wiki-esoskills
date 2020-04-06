@@ -55,10 +55,12 @@ $wgResourceModules['ext.EsoSkills.styles'] = array(
 
 $wgResourceModules['ext.EsoSkills.scripts'] = array(
 	'position' => 'top',
-	'scripts' => array( 'jquery-ui.min.js', 'jquery.ui.touch-punch.min.js', 'esoskills.js', 'esocp_simple.js' ),
+	//'scripts' => array( 'jquery-ui.min.js', 'jquery.ui.touch-punch.min.js', 'esoskills.js', 'esocp_simple.js' ),
+	'scripts' => array( 'esoskills.js', 'esocp_simple.js' ),
 	'localBasePath' => '/home/uesp/esolog.static/resources/',
 	'remoteBasePath' => '//esolog-static.uesp.net/resources/',
 	'targets' => array( 'desktop', 'mobile' ),
+	'dependencies' => array ('jquery.ui.core', 'jquery.ui.mouse', 'jquery.ui.draggable', 'jquery.ui.touchPunch', 'jquery.ui.droppable'),
 );
 
 $wgResourceModules['ext.EsoSkills.styles2'] = array(
@@ -75,6 +77,7 @@ $wgResourceModules['ext.EsoSkills.scripts2'] = array(
 	'localBasePath' => __DIR__,
 	'remoteBasePath' => "$wgScriptPath/extensions/UespEsoSkills/",
 	'targets' => array( 'desktop', 'mobile' ),
+	'dependencies' => array ('ext.EsoSkills.scripts'),
 );
 
 
