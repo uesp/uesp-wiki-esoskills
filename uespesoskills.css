@@ -119,3 +119,12 @@
 	font-weight: bold;
 	display: inline;
 }
+
+.esoSkillPopupIcon {
+	display: block;
+	margin-left: 148px;
+	position: absolute;
+	top: -32px;
+	width: 64px;
+	height: 64px;
+}

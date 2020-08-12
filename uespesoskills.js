@@ -9,7 +9,7 @@ function CreateEsoSkillPopupTooltip()
 }
 
 
-window.ShowEsoSkillPopupTooltip = function (parent, skillId, level, health, magicka, stamina, spellDamage, weaponDamage, skillLine)
+window.ShowEsoSkillPopupTooltip = function (parent, skillId, level, health, magicka, stamina, spellDamage, weaponDamage, skillLine, showThumb)
 {
 	var linkSrc = "//esolog.uesp.net/skillTooltip.php";
 	var dataOk = false;
@@ -23,6 +23,7 @@ window.ShowEsoSkillPopupTooltip = function (parent, skillId, level, health, magi
 	if (stamina) params += "&stamina=" + stamina;
 	if (spellDamage) params += "&spelldamage=" + spellDamage;
 	if (weaponDamage) params += "&weapondamage=" + weaponDamage;
+	if (showThumb) params += "&thumb";
 	
 	if (!dataOk) return false;
 	
@@ -41,7 +42,7 @@ window.ShowEsoSkillPopupTooltip = function (parent, skillId, level, health, magi
 		if (g_EsoSkillPopupIsVisible)
 		{
 			g_EsoSkillPopupTooltip.show();
-			AdjustEsoItemLinkTooltipPosition(g_EsoSkillPopupTooltip, $(parent));
+			AdjustEsoSkillPopupTooltipPosition(g_EsoSkillPopupTooltip, $(parent));
 		}
 
 	});
@@ -80,7 +81,7 @@ function AdjustEsoSkillPopupTooltipPosition(tooltip, parent)
          left = left - toolTipWidth - parent.width() - 28;
      }
      
-     tooltip.offset({ top: top, left: left });
+     tooltip.offset({ top: top + 32, left: left });
      viewportTooltip = tooltip[0].getBoundingClientRect();
      
      if (viewportTooltip.left < 0 )
@@ -89,8 +90,9 @@ function AdjustEsoSkillPopupTooltipPosition(tooltip, parent)
          var realOffset = el.offset();
          el.remove();
          
-         left = realOffset.left - toolTipWidth - 3;
-         tooltip.offset({ top: top, left: left });
+         left = realOffset.left - toolT
+         ipWidth - 3;
+         tooltip.offset({ top: top + 32, left: left });
      }
      
 }
@@ -105,7 +107,7 @@ function HideEsoSkillPopupTooltip()
 
 function OnEsoSkillLinkEnter()
 {
-	ShowEsoSkillPopupTooltip(this, $(this).attr('skillid'), $(this).attr('level'), $(this).attr('health'), $(this).attr('magicka'), $(this).attr('stamina'), $(this).attr('spelldamage'), $(this).attr('weapondamage'), $(this).attr('skillline'));
+	ShowEsoSkillPopupTooltip(this, $(this).attr('skillid'), $(this).attr('level'), $(this).attr('health'), $(this).attr('magicka'), $(this).attr('stamina'), $(this).attr('spelldamage'), $(this).attr('weapondamage'), $(this).attr('skillline'), $(this).attr('thumb'));
 }
 
 

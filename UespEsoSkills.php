@@ -156,6 +156,7 @@ function uespRenderEsoSkillTooltip($input, array $args, Parser $parser, PPFrame 
 	$skillStamina = "";
 	$skillSpellDamage = "";
 	$skillWeaponDamage = "";
+	$skillShowThumb = "";
 	$skillShowAll = "1";
 	
 	foreach ($args as $name => $value)
@@ -205,6 +206,10 @@ function uespRenderEsoSkillTooltip($input, array $args, Parser $parser, PPFrame 
 			case "showall":
 				$skillShowAll = trim($value);
 				if ($skillShowAll == "") $skillShowAll = "1";
+				break;
+			case "thumb":
+				$skillShowThumb = trim($value);
+				if ($skillShowThumb == "" || $skillShowThumb == null) $skillShowThumb = "1";
 				break;
 		}
 	
@@ -283,6 +288,12 @@ function uespRenderEsoSkillTooltip($input, array $args, Parser $parser, PPFrame 
 	{
 		$attributes .= "showall='$skillShowAll' ";
 		$params .= "&showall=$skillShowAll";
+	}
+	
+	if ($skillShowThumb != "") 
+	{
+		$attributes .= "thumb='$skillShowThumb' ";
+		$params .= "&thumb=$skillShowThumb";
 	}
 	
 	$url = "/wiki/Special:EsoSkills?$params";
