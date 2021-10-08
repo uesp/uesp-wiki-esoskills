@@ -10,6 +10,7 @@ staged = true
 
 ignore = *.deploy
 ignore = .hg*
+ignore = .git*
 
 dest = content1.uesp.net:/home/uesp/www/w/extensions/UespEsoSkills/
 dest = content2.uesp.net:/home/uesp/www/w/extensions/UespEsoSkills/

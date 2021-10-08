@@ -1,5 +1,6 @@
 window.g_EsoSkillPopupTooltip = null;
 window.g_EsoSkillPopupIsVisible = false;
+window.g_EsoSkillPopupCache = {};
 
 
 function CreateEsoSkillPopupTooltip()
@@ -36,15 +37,23 @@ window.ShowEsoSkillPopupTooltip = function (parent, skillId, level, health, magi
 	g_EsoSkillPopupTooltip.css({ top: position.top-50, left: position.left + width });
 	
 	g_EsoSkillPopupIsVisible = true;
-
-	g_EsoSkillPopupTooltip.load(linkSrc, params, function() {
 	
+	if (g_EsoSkillPopupCache[params])
+	{
+		g_EsoSkillPopupTooltip.html(g_EsoSkillPopupCache[params]);
+		g_EsoSkillPopupTooltip.show();
+		AdjustEsoSkillPopupTooltipPosition(g_EsoSkillPopupTooltip, $(parent));
+		return;
+	}
+	
+	g_EsoSkillPopupTooltip.load(linkSrc, params, function() {
+		
 		if (g_EsoSkillPopupIsVisible)
 		{
 			g_EsoSkillPopupTooltip.show();
 			AdjustEsoSkillPopupTooltipPosition(g_EsoSkillPopupTooltip, $(parent));
+			g_EsoSkillPopupCache[params] = g_EsoSkillPopupTooltip.html();
 		}
-
 	});
 }
 
