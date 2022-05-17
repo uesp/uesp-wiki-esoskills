@@ -113,7 +113,7 @@ function UespEsoSkillsParserInit(Parser $parser)
 	
 	$wgOut->addModules( array( 'ext.EsoSkills.scripts', 'ext.EsoSkills.scripts2', 'ext.EsoSkills.baseScripts' ) );
 	$wgOut->addModuleStyles( array( 'ext.EsoSkills.styles', 'ext.EsoSkills.styles2', 'ext.EsoSkills.baseStyles' ) );
-			
+	
 	$parser->setHook('esoskill', 'uespRenderEsoSkillTooltip');
 	return true;
 }
