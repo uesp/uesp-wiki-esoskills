@@ -16,3 +16,5 @@ dest = content1.uesp.net:/home/uesp/www/w/extensions/UespEsoSkills/
 dest = content2.uesp.net:/home/uesp/www/w/extensions/UespEsoSkills/
 dest = content3.uesp.net:/home/uesp/www/w/extensions/UespEsoSkills/
 
+destname = [dev]content3.uesp.net:/home/uesp/dev/www/w/extensions/UespEsoSkills/
+

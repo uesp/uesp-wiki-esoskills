@@ -128,7 +128,7 @@ function ParseEsoLevel($level)
 		if ($value > 66) $value = 66;
 		return $value;
 	}
-
+	
 	if (preg_match("#^[vV]([0-9]+)#", trim($level), $matches))
 	{
 		$value = intval($matches[1]) + 50;
@@ -136,7 +136,7 @@ function ParseEsoLevel($level)
 		if ($value > 66) $value = 66;
 		return $value;
 	}
-
+	
 	return 66;
 }
 
