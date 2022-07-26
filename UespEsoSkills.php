@@ -38,7 +38,7 @@ $wgExtensionCredits['specialpage'][] = array(
 $wgAutoloadClasses['SpecialEsoSkills'] = __DIR__ . '/SpecialEsoSkills.php';
 $wgAutoloadClasses['SpecialEsoCps'] = __DIR__ . '/SpecialEsoCps.php';
 $wgMessagesDirs['EsoSkills'] = __DIR__ . "/i18n";
-$wgExtensionMessagesFiles['EsoSkills'] = __DIR__ . '/EsoSkills.alias.php';
+$wgExtensionMessagesFiles['EsoSkillsAlias'] = __DIR__ . '/EsoSkills.alias.php';
 $wgSpecialPages['EsoSkills'] = 'SpecialEsoSkills';
 $wgSpecialPages['EsoCps'] = 'SpecialEsoCps';
 
